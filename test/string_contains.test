@@ -1,0 +1,14 @@
+# -*- mode:python; coding:utf-8 -*-
+
+strings = [
+    (1, 'hello', 'ell'),
+    (1, 'hello', 'h'),
+    (1, 'hello', 'lo'),
+    (0, 'hello', 'lll'),
+    ]
+
+for result, _str, substr in strings:
+    t = Test('$testdir/string_contains %s %s' % (_str, substr))
+    t.post += FileContains(str(result))
+
+

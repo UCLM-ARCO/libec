@@ -1,0 +1,5 @@
+# -*- mode:python; coding:utf-8 -*-
+
+t = Test('$testdir/config_parser $testdir/files/config.conf', save_stdout=True)
+t.post += FileEquals(t.stdout, '$testdir/files/config.conf.out')
+

@@ -1,0 +1,7 @@
+Section: 'section1'
+   attr = 1
+Section: 'section2'
+   attr = 1 2
+Section: 'section3'
+   attr1 = 1
+   attr2 = 2 3 4 5

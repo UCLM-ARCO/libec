@@ -1,0 +1,14 @@
+#!/usr/bin/make -f
+
+VERSION=1.11-2
+
+%:
+	dh $@
+
+build-orig-source:
+	mkdir -p libeasyc++-$(VERSION)
+	tar --exclude=debian --exclude=\*~ --exclude=.svn --exclude=\*.o \
+		--exclude=libeasyc++-$(VERSION) -cf - . \
+		| ( cd libeasyc++-$(VERSION) && tar xf - )
+	tar -czf ../libeasyc++_$(VERSION).orig.tar.gz libeasyc++-$(VERSION)
+	$(RM) -r libeasyc++-$(VERSION)

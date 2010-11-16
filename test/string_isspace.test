@@ -1,0 +1,22 @@
+# -*- mode:python; coding:utf-8 -*-
+
+import string
+
+strings = [
+    (1, ' '),
+    (1, '      '),
+    (1, '\t'),
+    (1, '   \t'),
+    (1, '  \t\n \r'),
+    (0, ''),
+    (0, 'a    '),
+    ]
+
+Test(None).pre += AtheistVersion('0.20100522')
+
+for result, val in strings:
+    t = Test('$testdir/string_isspace "%s"' % val, shell=True,
+             desc=repr(val))
+    t.post += FileContains(str(result), whole=True, strip=string.whitespace)
+
+

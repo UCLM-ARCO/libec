@@ -1,0 +1,11 @@
+# -*- mode:python; coding:utf-8 -*-
+
+replaces = [
+    ('fabadafabada', 'a', '0', 'f0b0d0f0b0d0'),
+    ('1234567890', '2345', '_', '1_67890')
+    ]
+
+for i in replaces:
+    t = Test('$testdir/string_replace %s %s %s' % tuple(i[0:3]))
+    t.post += FileContains([i[0], i[3]])
+

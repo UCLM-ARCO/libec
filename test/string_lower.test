@@ -1,0 +1,11 @@
+# -*- mode:python; coding:utf-8 -*-
+
+strings = [
+    'Hello',
+    'Hello WORLD',
+    ]
+
+for i in strings:
+    t = Test('$testdir/string_lower "%s"' % i, shell=True)
+    t.post += FileContains("%s" % i.lower())
+

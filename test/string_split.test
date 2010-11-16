@@ -1,0 +1,29 @@
+# -*- mode:python; coding:utf-8 -*-
+
+strings = [
+    ('hola::adios', '::', ''),
+    ('hola:adios',  '::', ''),
+    ('usr/share/doc/emacs23', '/', ''),
+    ('/usr/share/doc/emacs23/', '/', ''),
+    ('/usr/share/doc/emacs23/', '/', 0),
+    ('/usr/share/doc/emacs23/', '/', 2),
+    ('/usr/share/doc/emacs23/', '/', 8),
+    ('Uno-Dos--Tres', '--', ''),
+    ]
+
+strings_default_sep = [
+    'hola adios',
+    'hola  adios',
+    'En un lugar de La Mancha',
+    'hola \tadios',
+    ]
+
+for _str, delim, _max in strings:
+    value = str(_str.split(delim, _max if _max != '' else -1)).replace("'", '"')
+    t = Test('$testdir/string_split %s %s %s' % (_str, delim, _max), desc=value)
+    t.post += FileContains([_str, value])
+
+for _str in strings_default_sep:
+    value = str(_str.split()).replace("'", '"')
+    t = Test('$testdir/string_split "%s"' % _str, shell=True, desc=value)
+    t.post += FileContains([_str, value])

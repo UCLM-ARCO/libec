@@ -1,0 +1,12 @@
+# -*- mode:python; coding:utf-8 -*-
+
+strings = [
+    '',
+    ' hello  ',
+    'hello world   ',
+    ]
+
+for i in strings:
+    t = Test('$testdir/string_strip "%s"' % i, shell=True)
+    t.post += FileContains("[%s]" % i.strip())
+

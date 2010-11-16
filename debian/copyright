@@ -1,0 +1,40 @@
+This work was packaged for Debian by:
+
+    Cleto Martin Angelina <cleto.martin@gmail.com> on Tue, 15 Sep 2009 10:21:16 +0200
+
+It was downloaded from:
+
+    svn co svn+ssh://arco.esi.uclm.es/var/svn/public/prj/libeasyc++
+
+Upstream Authors:
+
+    david.villa@uclm.es
+    cleto.martin@gmail.com
+
+Copyright:
+
+    Copyright (C) 2009 David Villa
+
+License:
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This package is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+On Debian systems, the complete text of the GNU General
+Public License version 3 can be found in `/usr/share/common-licenses/GPL-3'.
+
+The Debian packaging is:
+
+    Copyright (C) 2009 Cleto Martin Angelina <cleto.martin@gmail.com>
+
+and is licensed under the GPL version 3, see above.

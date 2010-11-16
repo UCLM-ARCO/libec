@@ -1,0 +1,12 @@
+# -*- mode:python; coding:utf-8 -*-
+
+import os
+
+paths = [
+    'usr/share slice/ /other/ sample.ice',
+    ]
+
+for i in paths:
+    t = Test('$testdir/os_path_join %s' % i)
+    t.post += FileContains(os.path.join(i.split()))
+
