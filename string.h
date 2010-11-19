@@ -27,17 +27,20 @@ namespace ec {
 		static bool endswith(const std::string& str, const std::string& suffix);
 		static bool isspace(const std::string& str);
 		static std::string join(const std::string& str, const std::vector<std::string>& fields);
+
+		/*
+		 * string::lower("HellO1\n") produces "hello1\n"
+		 */
 		static std::string lower(const std::string& str);
 
-		/* string s("__pa_par_apat_");
-		 * s.replace("pa", "MO") produces "__MO_MOr_aMOt_"
+		/*
+		 * string::replace("__pa_par_apat_", "pa", "MO") produces "__MO_MOr_aMOt_"
 		 */
-		static std::string
-		replace(const std::string& str, const std::string& old,
-				const std::string& new_, std::string::size_type count = 0);
+		static std::string replace(const std::string& str, const std::string& old,
+															 const std::string& new_, std::string::size_type count = 0);
 
-		/* string s("foo::bar");
-		 * s.split("::") produces ["foo", "bar"]
+		/*
+		 * string::split("::") produces ["foo", "bar"]
 		 */
 		static std::vector<std::string> split(const std::string& str, const std::string& sep=whitespace, int maxsplit=-1);
 

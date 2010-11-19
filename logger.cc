@@ -17,7 +17,7 @@ std::ostream&
 ec::Logger::operator()(ec::Logger::Level msg_level) {
   const char* level_names[] = {"*", "INFO", "DEBUG", "WARNING", "ERROR", "FATAL"};
 
-  if (msg_level < _level) return ec::Logger::get_null();
+  if (msg_level < level) return ec::Logger::get_null();
 
   std::cout << "[" << level_names[msg_level] << "] ";
   return std::cout;

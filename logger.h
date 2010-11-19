@@ -9,10 +9,11 @@ namespace ec{
   class Logger {
   public:
     enum Level {ALL, DEBUG, INFO, WARNING, ERROR, FATAL};
+    Level level;
     static Logger root;
-    
-    Logger(Level level=ERROR) : _level(level) {}
-    void set_level(Level level) { _level = level; };
+
+    Logger(Level level=ERROR) : level(level) {}
+    void set_level(Level new_level) { level = new_level; };
     std::ostream& operator()(Level msg_level);
 
     std::ostream& debug(void)    { return (*this)(DEBUG); }
@@ -22,23 +23,22 @@ namespace ec{
     std::ostream& fatal(void)    { return (*this)(FATAL); }
 
   private:
-    Level _level;
     std::ofstream* _dev_null;
     std::ofstream& get_null(void);
-    
+
     friend std::ostream& debug(void);
     friend std::ostream& info(void);
     friend std::ostream& warn(void);
     friend std::ostream& error(void);
     friend std::ostream& fatal(void);
   };
-  
+
   std::ostream& debug(void);
   std::ostream& info(void);
   std::ostream& warn(void);
   std::ostream& error(void);
   std::ostream& fatal(void);
-  
+
 
   /* Class for container logging
    *
@@ -59,32 +59,32 @@ namespace ec{
     /// Public typedef
     typedef std::basic_ostream<char, std::char_traits<char> > ostream_type;
     //@}
-    
+
   private:
     //ostream_type*	_M_stream;
     //const _CharT*	_M_string;
     Logger _logger;
-    Logger::Level _level;
-    
+    Logger::Level level;
+
   public:
     /// Construct from an ostream.
     Log_iterator() :
       _logger(Logger::root),
-      _level(Logger::ERROR) { }
-    
+      level(Logger::ERROR) { }
+
     Log_iterator(Logger::Level level) :
       _logger(Logger::root),
-      _level(level)  { }
+      level(level)  { }
 
     Log_iterator(Logger logger, Logger::Level level) :
       _logger(logger),
-      _level(level)  { }
-    
-    
+      level(level)  { }
+
+
     /// Copy constructor.
     Log_iterator(const Log_iterator& __obj)
-      : _logger(__obj._logger), _level(__obj._level)  { }
-    
+      : _logger(__obj._logger), level(__obj.level)  { }
+
     Log_iterator&
     operator=(const _Tp& __value)
     {
@@ -94,19 +94,19 @@ namespace ec{
 	//*_M_stream << "[DEBUG2]";
 	//*_M_stream << __value;
 	//*_M_stream << std::endl;
-      
-      _logger(_level) << __value << std::endl;
+
+      _logger(level) << __value << std::endl;
       return *this;
     }
-    
+
     Log_iterator&
     operator*()
     { return *this; }
-    
+
     Log_iterator&
     operator++()
     { return *this; }
-    
+
     Log_iterator&
     operator++(int)
     { return *this; }
