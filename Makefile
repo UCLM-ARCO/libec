@@ -22,10 +22,6 @@ install: all
 	-ln -s libeasyc++.so.1.0 $(DESTDIR)/usr/lib/libeasyc++.so
 	-ln -s libeasyc++.so.1.0 $(DESTDIR)/usr/lib/libeasyc++.so.1
 
-check: all
-	$(MAKE) -C test
-	atheist -w0 test
-
 clean:
 	$(RM) *.so* *.a *.o *~
 	$(MAKE) -C test clean
