@@ -1,41 +1,47 @@
-libeasyc++ (1.11-2) unstable; urgency=low
+libec (1.12-1) unstable; urgency=low
+
+  * Renaming package
+
+ -- Cleto Martin Angelina <cleto.martin@gmail.com>  Fri, 25 Mar 2011 17:42:29 +0100
+
+libec (1.11-2) unstable; urgency=low
 
   * atoi
 
  -- David Villa Alises <David.Villa@uclm.es>  Wed, 02 Jun 2010 13:50:33 +0100
 
-libeasyc++ (1.11-1) unstable; urgency=low
+libec (1.11-1) unstable; urgency=low
 
   * Non-maintainer upload.
 
  -- David Villa Alises <David.Villa@uclm.es>  Sat, 29 May 2010 21:43:53 +0100
 
-libeasyc++ (1.10-1) unstable; urgency=low
+libec (1.10-1) unstable; urgency=low
 
   * New upstream release.
   * Included new features at string and ConfigParser.
 
  -- Cleto Martin Angelina <cleto.martin@gmail.com>  Tue, 25 May 2010 16:52:35 +0200
 
-libeasyc++ (1.0-4) unstable; urgency=low
+libec (1.0-4) unstable; urgency=low
 
   * Added build-orig-source rule
 
  -- Cleto Martin Angelina <cleto.martin@gmail.com>  Thu, 20 May 2010 14:11:57 +0200
 
-libeasyc++ (1.0-3) unstable; urgency=low
+libec (1.0-3) unstable; urgency=low
 
   * Updated to dh7
 
  -- Cleto Martin Angelina <cleto.martin@gmail.com>  Wed, 07 Oct 2009 19:43:29 +0200
 
-libeasyc++ (1.0-2) unstable; urgency=low
+libec (1.0-2) unstable; urgency=low
 
   * Solved several package bugs.
 
  -- Cleto Martin Angelina <cleto.martin@gmail.com>  Tue, 15 Sep 2009 14:22:34 +0200
 
-libeasyc++ (1.0-1) unstable; urgency=low
+libec (1.0-1) unstable; urgency=low
 
   * Initial release.
 

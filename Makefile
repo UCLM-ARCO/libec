@@ -4,7 +4,7 @@ CXXFLAGS=-Wall -ggdb -fPIC
 VERSION=1.0
 SONAME=1
 
-LIB=libeasyc++
+LIB=libec
 
 all: $(LIB).a $(LIB).so.$(VERSION)
 
@@ -16,15 +16,15 @@ $(LIB).so.$(VERSION): $(FILES:%.cc=%.o)
 	$(CXX) $(LDFLAGS) -o $@ $(filter %.o, $^)
 
 install: all
-	install -dv $(DESTDIR)/usr/lib $(DESTDIR)/usr/include/easyc++
+	install -dv $(DESTDIR)/usr/lib $(DESTDIR)/usr/include/ec
 	install -v *.so* *.a $(DESTDIR)/usr/lib
-	install -v *.h $(DESTDIR)/usr/include/easyc++
-	-ln -s libeasyc++.so.1.0 $(DESTDIR)/usr/lib/libeasyc++.so
-	-ln -s libeasyc++.so.1.0 $(DESTDIR)/usr/lib/libeasyc++.so.1
+	install -v *.h $(DESTDIR)/usr/include/ec
+	-ln -s libec.so.1.0 $(DESTDIR)/usr/lib/libec.so
+	-ln -s libec.so.1.0 $(DESTDIR)/usr/lib/libec.so.1
 
 clean:
 	$(RM) *.so* *.a *.o *~
-	$(MAKE) -C test clean
+
 
 
 

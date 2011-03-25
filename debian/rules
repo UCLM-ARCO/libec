@@ -1,14 +1,14 @@
 #!/usr/bin/make -f
 
-VERSION=1.11-2
+VERSION=1.12
 
 %:
 	dh $@
 
-build-orig-source:
-	mkdir -p libeasyc++-$(VERSION)
+build-orig:
+	mkdir -p libec-$(VERSION)
 	tar --exclude=debian --exclude=\*~ --exclude=.svn --exclude=\*.o \
-		--exclude=libeasyc++-$(VERSION) -cf - . \
-		| ( cd libeasyc++-$(VERSION) && tar xf - )
-	tar -czf ../libeasyc++_$(VERSION).orig.tar.gz libeasyc++-$(VERSION)
-	$(RM) -r libeasyc++-$(VERSION)
+		--exclude=libec-$(VERSION) -cf - . \
+		| ( cd libec-$(VERSION) && tar xf - )
+	tar -czf ../tarballs/libec_$(VERSION).orig.tar.gz libec-$(VERSION)
+	$(RM) -r libec-$(VERSION)
