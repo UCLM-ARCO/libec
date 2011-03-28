@@ -1,6 +1,0 @@
-#!/usr/bin/python
-# -*- mode:python; coding:utf-8; tab-width:4 -*-
-
-CxxTest('$testdir/logger.cc',
-        objs={'$basedir':['logger.o']},
-        compiling_flags='-I$basedir')
