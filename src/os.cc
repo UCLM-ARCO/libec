@@ -56,8 +56,8 @@ ec::os::path::resolve_file(const std::string& fname,
       it != paths.end(); ++it) {
 
     std::vector<std::string> fields;
-    fields.push_back(*it);
-    fields.push_back(fname);
+    fields.push_back(ec::string::strip(*it));
+    fields.push_back(ec::string::strip(fname));
 
     std::string abspath = ec::os::path::join(fields);
     if (ec::os::path::exists(abspath)) return abspath;

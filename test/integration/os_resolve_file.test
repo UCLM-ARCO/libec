@@ -1,0 +1,34 @@
+# -*- mode: python; coding: utf-8 -*-
+
+import os
+
+
+binary = "os_resolve_file"
+make = Test('make {0}'.format(binary), cwd="$testdir")
+make.gen += "$testdir/{0}".format(binary)
+
+
+def resolve(name, paths):
+    for p in paths:
+        full = os.path.join(p, name).strip()
+        if os.path.exists(full):
+            return full
+    return ""
+
+
+files = [
+    ('inexistent_file', ['$fulltestdir', '.', '/tmp']),
+    ('$testname.test',  ['$fulltestdir', '.', '/tmp']),
+    ('inexistent_file', ['inexistent_dir']),
+    ('$testname.test',  ['inexistent_dir']),
+    (' $testname.test', ['$fulltestdir']),
+    ('$testname.test',  [' $fulltestdir']),
+    ('$testname.test ', ['$fulltestdir']),
+    ('$testname.test',  ['$fulltestdir ']),
+    ]
+
+for fname, paths in files:
+    plain_paths = " ".join(['"{0}"'.format(x) for x in paths])
+    t = Test('$testdir/{0} {1} {2}'.format(binary, fname, plain_paths))
+    t.post += FileContains(resolve(fname, paths))
+
