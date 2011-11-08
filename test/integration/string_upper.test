@@ -1,4 +1,9 @@
-# -*- mode:python; coding:utf-8 -*-
+# -*- mode: python; coding: utf-8 -*-
+
+binary = "string_upper"
+make = Test('make {0}'.format(binary), cwd="$testdir")
+make.gen += "$testdir/{0}".format(binary)
+
 
 strings = [
     'Hello',
@@ -6,6 +11,6 @@ strings = [
     ]
 
 for i in strings:
-    t = Test('$testdir/string_upper "%s"' % i, shell=True)
-    t.post += FileContains("%s" % i.upper())
+    t = Test('$testdir/{0} "{1}"'.format(binary, i), shell=True)
+    t.post += FileContains(i.upper())
 

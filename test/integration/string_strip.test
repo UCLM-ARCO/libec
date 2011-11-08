@@ -1,4 +1,9 @@
-# -*- mode:python; coding:utf-8 -*-
+# -*- mode: python; coding: utf-8 -*-
+
+binary = "string_strip"
+make = Test('make {0}'.format(binary), cwd="$testdir")
+make.gen += "$testdir/{0}".format(binary)
+
 
 strings = [
     '',
@@ -7,6 +12,6 @@ strings = [
     ]
 
 for i in strings:
-    t = Test('$testdir/string_strip "%s"' % i, shell=True)
-    t.post += FileContains("[%s]" % i.strip())
+    t = Test('$testdir/{0} "{1}"'.format(binary, i), shell=True)
+    t.post += FileContains("[{0}]".format(i.strip()))
 

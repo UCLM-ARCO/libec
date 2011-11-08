@@ -1,6 +1,5 @@
-#!/usr/bin/python
-# -*- mode:python; coding:utf-8; tab-width:4 -*-
+# -*- mode: python; coding: utf-8; -*-
 
 CxxTest('$testdir/string.cc',
-        objs={'$basedir':['string.o']},
-        compiling_flags='-I$basedir')
+        objs={'$basedir/src':['string.o']},
+        compiling_flags='-I$basedir/src')

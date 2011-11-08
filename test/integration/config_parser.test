@@ -1,4 +1,7 @@
-# -*- mode:python; coding:utf-8 -*-
+# -*- mode: python; coding: utf-8 -*-
+
+make = Test('make config_parser', cwd="$testdir")
+make.gen += "$testdir/config_parser"
 
 t = Test('$testdir/config_parser $testdir/files/config.conf', save_stdout=True)
 t.post += FileEquals(t.stdout, '$testdir/files/config.conf.out')

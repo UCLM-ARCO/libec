@@ -1,4 +1,9 @@
-# -*- mode:python; coding:utf-8 -*-
+# -*- mode: python; coding: utf-8 -*-
+
+binary = "string_split"
+make = Test('make {0}'.format(binary), cwd="$testdir")
+make.gen += "$testdir/{0}".format(binary)
+
 
 strings = [
     ('hola::adios', '::', ''),
@@ -20,10 +25,10 @@ strings_default_sep = [
 
 for _str, delim, _max in strings:
     value = str(_str.split(delim, _max if _max != '' else -1)).replace("'", '"')
-    t = Test('$testdir/string_split %s %s %s' % (_str, delim, _max), desc=value)
+    t = Test('$testdir/{0} {1} {2} {3}'.format(binary, _str, delim, _max), desc=value)
     t.post += FileContains([_str, value])
 
 for _str in strings_default_sep:
     value = str(_str.split()).replace("'", '"')
-    t = Test('$testdir/string_split "%s"' % _str, shell=True, desc=value)
+    t = Test('$testdir/{0} "{1}"'.format(binary, _str), shell=True, desc=value)
     t.post += FileContains([_str, value])

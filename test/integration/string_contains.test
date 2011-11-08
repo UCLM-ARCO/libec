@@ -1,5 +1,10 @@
 # -*- mode:python; coding:utf-8 -*-
 
+
+binary = "string_contains"
+make = Test('make {0}'.format(binary), cwd="$testdir")
+make.gen += "$testdir/{0}".format(binary)
+
 strings = [
     (1, 'hello', 'ell'),
     (1, 'hello', 'h'),
@@ -8,7 +13,7 @@ strings = [
     ]
 
 for result, _str, substr in strings:
-    t = Test('$testdir/string_contains %s %s' % (_str, substr))
+    t = Test('$testdir/{0} {1} {2}'.format(binary, _str, substr))
     t.post += FileContains(str(result))
 
 

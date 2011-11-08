@@ -1,6 +1,11 @@
-# -*- mode:python; coding:utf-8 -*-
+# -*- mode: python; coding: utf-8 -*-
 
 import string
+
+binary = "string_isspace"
+make = Test('make {0}'.format(binary), cwd="$testdir")
+make.gen += "$testdir/{0}".format(binary)
+
 
 strings = [
     (1, ' '),
@@ -15,7 +20,7 @@ strings = [
 Test(None).pre += AtheistVersion('0.20100522')
 
 for result, val in strings:
-    t = Test('$testdir/string_isspace "%s"' % val, shell=True,
+    t = Test('$testdir/{0} "{1}"'.format(binary, val), shell=True,
              desc=repr(val))
     t.post += FileContains(str(result), whole=True, strip=string.whitespace)
 
