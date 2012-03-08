@@ -1,3 +1,5 @@
+# -*- mode: makefile-gmake; coding: utf-8 -*-
+
 FILES=string.cc string.h logger.cc logger.h os.cc os.h ConfigParser.cc ConfigParser.h
 CXXFLAGS=-Wall -ggdb -fPIC
 
@@ -25,7 +27,8 @@ install: all
 clean:
 	$(RM) *.so* *.a *.o *~
 
-
+distclean:
+check:
 
 
 -include config.mk

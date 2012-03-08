@@ -1,3 +1,4 @@
+// -*- mode: c++; coding: utf-8 -*-
 
 #include "logger.h"
 
@@ -15,11 +16,13 @@ std::ostream& ec::fatal(void) { return ec::Logger::root(ec::Logger::FATAL); }
 
 std::ostream&
 ec::Logger::operator()(ec::Logger::Level msg_level) {
-  const char* level_names[] = {"*", "INFO", "DEBUG", "WARNING", "ERROR", "FATAL"};
+  const char* level_names[] = {"*", "DEBUG", "INFO", "WARNING", "ERROR", "FATAL"};
 
   if (msg_level < level) return ec::Logger::get_null();
 
   std::cout << "[" << level_names[msg_level] << "] ";
+  if (not name.empty()) 
+    std::cout << name << " ";
   return std::cout;
 }
 

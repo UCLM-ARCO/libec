@@ -1,3 +1,4 @@
+// -*- mode: c++; coding: utf-8 -*-
 
 #ifndef __EASY_LOGGER_H__
 #define __EASY_LOGGER_H__
@@ -10,11 +11,13 @@ namespace ec{
   public:
     enum Level {ALL, DEBUG, INFO, WARNING, ERROR, FATAL};
     Level level;
+    std::string name;
     static Logger root;
 
     Logger(Level level=ERROR) : level(level) {}
     void set_level(Level new_level) { level = new_level; };
     std::ostream& operator()(Level msg_level);
+    void set_name(std::string new_name) { name = new_name; };
 
     std::ostream& debug(void)    { return (*this)(DEBUG); }
     std::ostream& info(void)     { return (*this)(INFO); }

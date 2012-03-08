@@ -1,3 +1,9 @@
+libec (1.13-1) unstable; urgency=low
+
+  * Added name to logger
+
+ -- Oscar Aceña Herrera <oscaracena@gmail.com>  Thu, 08 Mar 2012 10:19:13 +0100
+
 libec (1.12-1) unstable; urgency=low
 
   * Renaming package
