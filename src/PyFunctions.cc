@@ -24,8 +24,12 @@
 #include "PyFunctions.h"
 
 
+namespace ec {
+namespace py {
+
+
 PyObjectPtr
-PyFunc::importModule(std::string name) {
+importModule(std::string name) {
     PyGILEnsurer e;
 
     PyObjectPtr nameObj = PyString_FromString(name.c_str());
@@ -40,7 +44,7 @@ PyFunc::importModule(std::string name) {
 }
 
 PyObjectPtr
-PyFunc::getClass(PyObjectPtr module, std::string name) {
+getClass(PyObjectPtr module, std::string name) {
     PyGILEnsurer e;
 
     PyObjectPtr classObj = PyObject_GetAttrString(module, name.c_str());
@@ -58,7 +62,7 @@ PyFunc::getClass(PyObjectPtr module, std::string name) {
 }
 
 PyObjectPtr
-PyFunc::getMethod(PyObjectPtr classObj, std::string name) {
+getMethod(PyObjectPtr classObj, std::string name) {
     PyGILEnsurer e;
 
     if (not PyObject_HasAttrString(classObj, name.c_str())) {
@@ -77,12 +81,12 @@ PyFunc::getMethod(PyObjectPtr classObj, std::string name) {
 }
 
 PyObjectPtr
-PyFunc::newInstance(PyObjectPtr cls) {
+newInstance(PyObjectPtr cls) {
     return newInstance(cls, NULL);
 }
 
 PyObjectPtr
-PyFunc::newInstance(PyObjectPtr cls, PyObjectPtr args) {
+newInstance(PyObjectPtr cls, PyObjectPtr args) {
     PyGILEnsurer e;
 
     if (not PyCallable_Check(cls)) {
@@ -100,12 +104,12 @@ PyFunc::newInstance(PyObjectPtr cls, PyObjectPtr args) {
 }
 
 PyObjectPtr
-PyFunc::callMethod(PyObjectPtr object, std::string name) {
+callMethod(PyObjectPtr object, std::string name) {
     return callMethod(object, name, NULL);
 }
 
 PyObjectPtr
-PyFunc::callMethod(PyObjectPtr object, std::string name, PyObjectPtr args) {
+callMethod(PyObjectPtr object, std::string name, PyObjectPtr args) {
     PyGILEnsurer e;
 
     PyObjectPtr method = getMethod(object, name);
@@ -113,39 +117,41 @@ PyFunc::callMethod(PyObjectPtr object, std::string name, PyObjectPtr args) {
 
     if (not result) {
       	PyErr_Print();
-	throw PyFunc::RuntimeError();
+	throw RuntimeError();
     }
 
     return result;
 }
 
 bool
-PyFunc::getAsBool(PyObjectPtr value) {
+getAsBool(PyObjectPtr value) {
     return getAsInteger(value);
 }
 
 int
-PyFunc::getAsInteger(PyObjectPtr value) {
+getAsInteger(PyObjectPtr value) {
     PyGILEnsurer e;
 
     int retval = PyInt_AsLong(value);
     if (PyErr_Occurred()) {
      	PyErr_Print();
-    	throw PyFunc::RuntimeError();
+    	throw RuntimeError();
     }
 
     return retval;
 }
 
 std::string
-PyFunc::getAsString(PyObjectPtr value) {
+getAsString(PyObjectPtr value) {
     PyGILEnsurer e;
 
     std::string retval = PyString_AsString(value);
     if (PyErr_Occurred()) {
      	PyErr_Print();
-    	throw PyFunc::RuntimeError();
+    	throw RuntimeError();
     }
 
     return retval;
 }
+
+}}

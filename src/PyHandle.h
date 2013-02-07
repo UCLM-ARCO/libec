@@ -38,6 +38,8 @@
   #define IXDG if(0)
 #endif
 
+namespace ec {
+namespace py {
 
 class PyGILEnsurer {
 public:
@@ -163,5 +165,7 @@ private:
 };
 
 typedef PyHandle<PyObject> PyObjectPtr;
+
+}}
 
 #endif // LIBEC_PYHANDLE_H

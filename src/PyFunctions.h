@@ -26,8 +26,8 @@
 
 #include "PyHandle.h"
 
-
-namespace PyFunc {
+namespace ec {
+namespace py {
 
     class RuntimeError { };
 
@@ -49,6 +49,7 @@ namespace PyFunc {
     bool getAsBool(PyObjectPtr value);
     int getAsInteger(PyObjectPtr value);
     std::string getAsString(PyObjectPtr value);
-}
+
+}}
 
 #endif // LIBEC_PYFUNCTIONS_H
