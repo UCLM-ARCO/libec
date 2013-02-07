@@ -2,7 +2,7 @@ Source: libec
 Priority: extra
 Maintainer: Cleto Martin Angelina <cleto.martin@gmail.com>
 Build-Depends: cdbs, debhelper (>= 7)
-Standards-Version: 3.9.1
+Standards-Version: 3.9.3
 Section: libs
 
 Package: libec1
@@ -16,5 +16,5 @@ Package: libec1-dev
 Section: libdevel
 Architecture: any
 Depends: libec1 (= ${binary:Version}), ${misc:Depends}
-Description: helper structures to develop on c++
+Description: helper structures to develop on c++ (devel part)
  Development package for libec.

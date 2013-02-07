@@ -1,12 +1,17 @@
 # -*- mode: makefile-gmake; coding: utf-8 -*-
 
-FILES=string.cc string.h logger.cc logger.h os.cc os.h ConfigParser.cc ConfigParser.h
-CXXFLAGS=-Wall -ggdb -fPIC
+FILES    = string.cc string.h logger.cc logger.h os.cc os.h \
+	   ConfigParser.cc ConfigParser.h PyHandle.h \
+	   PyFunctions.h PyFunctions.cc
 
-VERSION=1.0
-SONAME=1
+CXXFLAGS = -Wall -ggdb -fPIC $$(python-config --includes)
+LDLIBS   = $$(python-config --ldflags)
 
-LIB=libec
+VERSION  = 1.0
+SONAME   = 1
+
+LIB      = libec
+
 
 all: $(LIB).a $(LIB).so.$(VERSION)
 
@@ -15,7 +20,7 @@ $(LIB).a: $(FILES:%.cc=%.o)
 
 $(LIB).so.$(VERSION): LDFLAGS = -shared -Wl,-soname=$(LIB).so.$(SONAME)
 $(LIB).so.$(VERSION): $(FILES:%.cc=%.o)
-	$(CXX) $(LDFLAGS) -o $@ $(filter %.o, $^)
+	$(CXX) $(LDFLAGS) $(LDLIBS) -o $@ $(filter %.o, $^)
 
 install: all
 	install -dv $(DESTDIR)/usr/lib $(DESTDIR)/usr/include/ec
